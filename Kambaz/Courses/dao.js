@@ -7,7 +7,9 @@ export default function CoursesDao() {
   }
  
   function createCourse(course) {
-    const newCourse = { ...course, _id: uuidv4() };
+    const newCourse = { ...course, _id: uuidv4(),
+      image: course.image || "/images/reactjs.jpg"
+    };
     return model.create(newCourse);
 
   }
