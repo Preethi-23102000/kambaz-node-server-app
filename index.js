@@ -10,7 +10,6 @@ import cors from "cors";
 import Hello from "./Hello.js";
 import Lab5 from "./Lab5/index.js";
 
-import db from "./Kambaz/Database/index.js";
 import UserRoutes from "./Kambaz/Users/routes.js";
 import CourseRoutes from "./Kambaz/Courses/routes.js";
 import ModulesRoutes from "./Kambaz/Modules/routes.js";
@@ -43,11 +42,11 @@ if (process.env.SERVER_ENV !== "development") {
 app.use(session(sessionOptions));
 
 app.use(express.json()); // middleware to parse JSON request bodies
-UserRoutes(app, db);
-CourseRoutes(app, db);
-ModulesRoutes(app, db);
-AssignmentRoutes(app, db);
-EnrollmentRoutes(app, db);
+UserRoutes(app);
+CourseRoutes(app);
+ModulesRoutes(app);
+AssignmentRoutes(app);
+EnrollmentRoutes(app);
 
 Lab5(app);
 Hello(app);
