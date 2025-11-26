@@ -2,15 +2,15 @@ import model from "./model.js";
 
 export default function AssignmentsDao() {
   async function findAssignmentsForCourse(courseId) {
-    return await model.find({ course: courseId });
-  }
+  return await model.find({ course: courseId }).lean();
+}
 
   async function findAssignmentById(assignmentId) {
-    return await model.findById(assignmentId);
-  }
+  return await model.findOne({ _id: assignmentId }).lean();
+}
+
 
   async function createAssignment(assignment) {
-    delete assignment._id;
     return await model.create(assignment);
   }
 
