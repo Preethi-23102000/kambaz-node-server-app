@@ -16,7 +16,8 @@ import ModulesRoutes from "./Kambaz/Modules/routes.js";
 import AssignmentRoutes from "./Kambaz/Assignments/routes.js";
 import EnrollmentRoutes from "./Kambaz/Enrollments/routes.js";
 
-const CONNECTION_STRING =process.env.DATABASE_CONNECTION_STRING || "mongodb://127.0.0.1:27017/kambaz"
+const CONNECTION_STRING =
+  process.env.DATABASE_CONNECTION_STRING || "mongodb://127.0.0.1:27017/kambaz";
 mongoose.connect(CONNECTION_STRING);
 const app = express();
 app.use(
@@ -36,7 +37,9 @@ if (process.env.SERVER_ENV !== "development") {
   sessionOptions.cookie = {
     sameSite: "none",
     secure: true,
+    httpOnly: true,
     domain: process.env.SERVER_URL,
+    maxAge: 24 * 60 * 60 * 1000,
   };
 }
 app.use(session(sessionOptions));
